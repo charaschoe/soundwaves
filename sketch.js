@@ -5,14 +5,13 @@ let bgColor = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  fill(50);
   textAlign(CENTER, CENTER);
-  textSize(140);
+  textSize(100);
 }
 
 function draw() {
   background(bgColor);
-  fill(textColor);
+  fill(255); // Set text color to white
   text(words[randomIndex], width / 2, height / 2);
 }
 
@@ -20,14 +19,10 @@ function mouseReleased() {
   randomIndex = round(random(0, words.length - 1));
 
   // Toggle background color
-  if (bgColor === 0) {
-    bgColor = 50;
-  } else {
-    bgColor = 0;
-  }
+  bgColor = bgColor === 0 ? 50 : 0;
 
-  // Toggle text color
-  textColor = 255 - textColor; // Invert the text color (assuming it starts at 255)
+  // Set text color to white
+  textColor = 255;
 }
 
 function windowResized() {
