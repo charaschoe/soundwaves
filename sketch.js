@@ -1,86 +1,75 @@
 /**
- * Random Name Generator
- * A university project for the second semester
- * This application generates random names from predefined lists
- * and provides an interactive interface for name generation.
+ * Names Generator — Nothing Design Style
  */
 
-// Name categories for different types of names
-const nameCategories = {
-	firstNames: ["Marlon", "Enes", "Jonas", "Philipp"],
-};
+// ── Name Data ──
+const FIRST_NAMES = [
+  "Marlon", "Enes", "Jonas", "Philipp", "Aria", "Leo", "Clara",
+  "Mira", "Tariq", "Sora", "Ida", "Kai", "Lena", "Rafael",
+  "Naima", "Felix", "Zoe", "Otto", "Maja", "Ivar", "Elin",
+  "Hugo", "Saskia", "Arne", "Lotte", "Nils", "Tove", "Bram",
+  "Anika", "Dante", "Freja", "Luca", "Astrid", "Elio", "Greta",
+  "Rune", "Hanna", "Milan", "Petra", "Viggo", "Inga", "Cyril",
+  "Mila", "Theo", "Rosa", "Iver", "Solveig", "Ezra", "Maren", "Elias", "Sylvie"
+];
 
-// Application state
+const LAST_NAMES = [
+  "Müller", "Schmidt", "Banks", "Kovács", "Fischer", "Weber", "Meyer",
+  "Wagner", "Becker", "Schulz", "Hoffmann", "Krämer", "Vogel", "Richter",
+  "Reinhardt", "Graf", "Koch", "Baumann", "Vogt", "Haas", "Jung",
+  "Kuhn", "Schmitt", "Winter", "Krüger", "Frank", "Berger", "Braun",
+  "Neumann", "Peters", "Lang", "Schäfer", "Zimmer", "Wolf", "Horn",
+  "Busch", "Bergmann", "Thomas", "Fritz", "Kaiser"
+];
+
+// ── State ──
 let currentName = "";
-let textColor = 255;
-let bgColor = 0;
-let isGenerating = false;
 let generationCount = 0;
 
-// Constants for UI
-const TEXT_SIZE = 140;
-const MIN_GENERATION_DELAY = 500; // Minimum delay between generations in ms
-let lastGenerationTime = 0;
-
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	textAlign(CENTER, CENTER);
-	textSize(TEXT_SIZE);
-
-	// Generate initial name
-	generateNewName();
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.style('margin', '0');
+  cnv.style('padding', '0');
+  cnv.style('display', 'block');
+  cnv.style('border', 'none');
+  cnv.style('position', 'absolute');
+  cnv.style('top', '0');
+  cnv.style('left', '0');
+  generateName();
 }
 
 function draw() {
-	background(bgColor);
-	fill(textColor);
+  background(0);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textSize(72);
+  textFont('sans-serif');
+  text(currentName, width / 2, height / 2);
 
-	// Display current name
-	text(currentName, width / 2, height / 2);
-
-	// Display generation count
-	textSize(24);
-	text(`Generated ${generationCount} names`, width / 2, height - 50);
-	textSize(TEXT_SIZE);
+  fill(102);
+  textSize(11);
+  textFont('monospace');
+  text("GENERATIONS  " + generationCount, 24, 36);
+  textAlign(CENTER);
+  text('TAP ANYWHERE', width / 2, 36);
 }
 
-function generateNewName() {
-	try {
-		const firstName = random(nameCategories.firstNames);
-		currentName = firstName;
-		generationCount++;
-
-		// Toggle colors
-		bgColor = bgColor === 0 ? 50 : 0;
-		textColor = 255 - textColor;
-
-		lastGenerationTime = millis();
-	} catch (error) {
-		console.error("Error generating name:", error);
-		currentName = "Error generating name";
-	}
+function generateName() {
+  var first = random(FIRST_NAMES);
+  var last = random(LAST_NAMES);
+  currentName = first + " " + last;
+  generationCount++;
 }
 
 function mouseReleased() {
-	const currentTime = millis();
-	if (currentTime - lastGenerationTime >= MIN_GENERATION_DELAY) {
-		generateNewName();
-	}
-}
-
-function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
-}
-
-// Prevent default touch behavior on mobile devices
-function touchStarted() {
-	return false;
+  generateName();
 }
 
 function touchEnded() {
-	const currentTime = millis();
-	if (currentTime - lastGenerationTime >= MIN_GENERATION_DELAY) {
-		generateNewName();
-	}
-	return false;
+  generateName();
+  return false;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }

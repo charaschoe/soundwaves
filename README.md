@@ -1,61 +1,46 @@
-# Soundwaves - Interactive Name Generator
+# Soundwaves
 
-## Project Overview
+A combinatorial name generator with a Nothing-inspired interface. Tap to generate first + last name combinations from a curated pool of 2,000+ possibilities.
 
-This interactive name generator was created as part of a design university project focused on algorithmic art and interactive installations. The project explores the intersection of visual design, user interaction, and algorithmic generation.
+## Features
+
+- **Combinatorial generation** — 50 first names × 40 last names = 2,000+ unique combinations
+- **Nothing Design aesthetic** — OLED black background, monochrome text hierarchy, Space Grotesk + Space Mono typography
+- **Percussive feedback** — Mechanical click sound via Web Audio API on each generation
+- **Snap animation** — Names enter with a scale + fade transition that feels like a physical switch
+- **Name categories** — Classifies each first name as CLASSIC, NORDIC, or MODERN
+- **Generation history** — Traces previously generated names at the bottom, fading with age
+- **Copy to clipboard** — Tap the COPY button to grab the current name
+- **Fully responsive** — Works on desktop and mobile, edge-to-edge canvas
+
+## How It Works
+
+1. The app combines a random first name with a random last name
+2. Each tap generates a new combination
+3. A percussive click confirms the generation
+4. Names are categorized by origin (CLASSIC, NORDIC, MODERN, or GENERATED)
+5. Previous names appear in a history row at the bottom
+
+## Tech Stack
+
+- **p5.js** (1.9.4) — Canvas rendering and interaction
+- **Native Web Audio API** — Percussive sound synthesis (no p5.sound dependency)
+- **Google Fonts** — Space Grotesk + Space Mono loaded at page start
+
+## Local Development
+
+```bash
+cd soundwaves
+python3 -m http.server 8000
+# Open http://localhost:8000
+```
+
+No build step or dependencies required — just serve the files and open in a browser.
 
 ## Project Context
 
-This application was developed for a university design course where students were tasked with:
-
-1. Creating an algorithmic design system
-2. Implementing interactive elements
-3. Filming the interaction process
-4. Deploying the project on Glitch.com
-
-The project demonstrates the application of algorithmic thinking in design, where simple rules and user interactions create dynamic visual experiences.
-
-## Technical Implementation
-
-The application is built using:
-
--   p5.js for creative coding and interactive graphics
--   JavaScript for logic and user interaction
--   Glitch.com for hosting and deployment
-
-### Features
-
--   Interactive name generation on click/touch
--   Visual feedback through color transitions
--   Responsive design that adapts to window size
--   Mobile-friendly interface
--   Generation counter to track interactions
-
-### How It Works
-
-1. The application displays a randomly selected name from a predefined list
-2. Each interaction (click or touch) generates a new name
-3. The background and text colors toggle with each generation
-4. A minimum delay between generations prevents rapid-fire interactions
-5. The generation count is displayed at the bottom of the screen
-
-## Installation & Usage
-
-1. Clone this repository or visit the Glitch.com project
-2. Open the application in a web browser
-3. Click or touch the screen to generate new names
-4. The application will work on both desktop and mobile devices
-
-## Project Requirements
-
--   Modern web browser with JavaScript enabled
--   Touch or mouse input capability
--   Internet connection for Glitch.com deployment
-
-## Credits
-
-Created as part of a university design course project focusing on algorithmic art and interactive installations.
+Originally created as a university design course project exploring algorithmic art and interactive installations. Evolved from a simple 4-name list into a full combinatorial system with Nothing Design-inspired interface patterns.
 
 ## License
 
-This project is open source and available under the MIT License.
+MIT

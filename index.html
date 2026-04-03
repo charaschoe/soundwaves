@@ -6,20 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+  <title>Names Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      padding: 0;
+    html, body {
       margin: 0;
+      padding: 0;
+      background: #000000;
       overflow: hidden;
+      -webkit-overflow-scrolling: none;
+    }
+    canvas {
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    #copyBtn {
+      position: fixed;
+      bottom: 108px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.4);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 150ms ease-out, color 150ms ease-out;
+      z-index: 10;
+    }
+    #copyBtn:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.8);
+    }
+    #copyBtn:active {
+      border-color: #fff;
+      color: #fff;
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
-  <script src="sketch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+  <script src="sketch.js?v=3"></script>
 </head>
 
 <body>
+  <button id="copyBtn" style="display:none">COPY</button>
 </body>
 
 </html>
